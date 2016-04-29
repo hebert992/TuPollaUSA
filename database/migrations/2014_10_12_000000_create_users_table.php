@@ -24,6 +24,20 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+         Schema::create('recargas', function (Blueprint $table) {
+            $table->increments('id_transaccion');
+            $table->integer('id_cliente');
+            $table->integer('monto');
+            $table->enum("tipo",["efectivo","transferencia","deposito","tdc"]);
+            $table->string("referencia");
+            $table->timestamps();
+        });
+        Schema::create('factura', function (Blueprint $table) {
+            $table->increments('id_factura');
+            $table->integer('id_cliente');
+            $table->integer('monto');
+            $table->timestamps();
+        });
     }
 
     /**
