@@ -17,15 +17,17 @@ Route::get('/', function () {
 /*
  * Registration
  */
-
+//autentificacion
 Route::post('/sesion', 'AuthController@authenticate');
 
 Route::get('/sesion', function () {
     return view('auth.login');
 });
-
+//validacion de codigo
 Route::get('register/verify/{confirmationCode}', 'ConfirmacionController@confirm');
-
+//recargas
+Route::get('admin/recarga/{ID}', 'RecargasController@recarga');
+Route::post('admin/recarga', 'RecargasController@recargando');
 
 Route::get("test", function() {
     $confirmation_code1 = str_random(40);
@@ -39,5 +41,12 @@ Route::get("test", function() {
 
 Route::auth();
 
-
 Route::get('/home', 'HomeController@index');
+//lista de usuarios
+Route::get('/admin/usuarios', 'ListUsersController@index');
+
+
+
+
+
+

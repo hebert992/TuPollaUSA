@@ -3,11 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/laragon/www/TuPollaUSA/app/User.php</file>
+            <file>file:/C:/laragon/www/TuPollaUSA/resources/views/home.blade.php</file>
+            <file>file:/C:/laragon/www/TuPollaUSA/app/Http/Controllers/SessionsController.php</file>
+            <file>file:/C:/laragon/www/TuPollaUSA/resources/views/admin/recarga.blade.php</file>
             <file>file:/C:/laragon/www/TuPollaUSA/app/factura.php</file>
             <file>file:/C:/laragon/www/TuPollaUSA/database/migrations/2014_10_12_000000_create_users_table.php</file>
+            <file>file:/C:/laragon/www/TuPollaUSA/resources/views/admin/ListUsers.blade.php</file>
+            <file>file:/C:/laragon/www/TuPollaUSA/app/Http/Controllers/Auth/AuthController.php</file>
+            <file>file:/C:/laragon/www/TuPollaUSA/app/Http/routes.php</file>
+            <file>file:/C:/laragon/www/TuPollaUSA/app/User.php</file>
+            <file>file:/C:/laragon/www/TuPollaUSA/app/Http/Controllers/AuthController.php</file>
             <file>file:/C:/laragon/www/TuPollaUSA/app/Http/Controllers/PostRecargasController.php</file>
+            <file>file:/C:/laragon/www/TuPollaUSA/app/Http/Controllers/ListUsersController.php</file>
             <file>file:/C:/laragon/www/TuPollaUSA/app/recargas.php</file>
+            <file>file:/C:/laragon/www/TuPollaUSA/app/Http/Controllers/ConfirmacionController.php</file>
         </group>
     </open-files>
 </project-private>

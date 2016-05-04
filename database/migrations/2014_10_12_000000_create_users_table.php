@@ -17,7 +17,10 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer("coins")->default(0);
             $table->enum("rol",["admin","supervisor","usuario","tienda"]);
+            $table->string("master")->nullable();;
+            $table->integer("id_master")->nullable();;
             $table->integer("email_confirmado")->default(0);
             $table->string("code_confirmacion")->nullable();
                     
@@ -30,6 +33,8 @@ class CreateUsersTable extends Migration
             $table->integer('monto');
             $table->enum("tipo",["efectivo","transferencia","deposito","tdc"]);
             $table->string("referencia");
+             $table->string("master");
+             $table->string("id_master");
             $table->timestamps();
         });
         Schema::create('factura', function (Blueprint $table) {

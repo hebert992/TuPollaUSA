@@ -17,7 +17,7 @@ protected $table = 'users';
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',"email_confirmado","rol","code_confirmacion",
+        'name', 'email', 'password',"email_confirmado","rol","code_confirmacion","coins",
     ];
 
     /**
@@ -26,6 +26,20 @@ protected $table = 'users';
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',"code_confirmacion",
+        'password', 'remember_token',"code_confirmacion","coins",
     ];
+    public function GetRol()
+    {
+       return $this->rol;
+    }
+
+    public function scopeName($query, $name)
+    {
+
+        if (trim($name) != "")
+        {
+            $query->where('name', "LIKE", "%$name%");
+        }
+    }
+
 }

@@ -14,7 +14,7 @@
                    
                     @endif
                 <div class="panel-heading">Bienvenido</div>
-@if(Session::has('flash_success'))
+                   @if(Session::has('flash_success'))
                   
                   <div class="alert alert-success" role="alert">{{Session::get('flash_success')}}</div>
                    {{Session::flush()}}

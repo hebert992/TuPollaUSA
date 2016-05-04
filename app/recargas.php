@@ -10,7 +10,7 @@ class recargas extends Model
     //
     
      protected $fillable = [
-        'id_cliente', 'monto', 'tipo',"referencia",
+        'id_cliente', 'monto', 'tipo',"referencia","master","id_master",
     ];
 
 }
