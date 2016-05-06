@@ -6,6 +6,7 @@ use App\recargas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 
 use App\Http\Requests;
@@ -34,6 +35,22 @@ class RecargasController extends Controller
 
     public function recargando(Request $request)
     {   $master = Auth::user();
+        $v = Validator::make($request->all(), [
+
+            'email'    => 'required|email|exists:users',
+            'monto' => 'required',
+            'tipo' => "required|in:transferencia,efectivo,deposito",
+            'referencia' => 'required|min:7',
+
+
+        ]);
+        if ($v->fails())
+        {
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        }
+
+
+
 
         $datos = $request->all();
         if(Auth::guest())

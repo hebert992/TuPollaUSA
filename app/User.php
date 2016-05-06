@@ -41,5 +41,9 @@ protected $table = 'users';
             $query->where('name', "LIKE", "%$name%");
         }
     }
+    public function scopeTienda($query ,$id)
+    {
+$query->where("id_master",$id);
+    }
 
 }
