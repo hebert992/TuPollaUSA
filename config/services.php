@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => "https://api.mailgun.net/v3/tupollausa.com",
+        'secret' => "key-1c497a4b04ac33f3fc39a2f0ddb1883d",
     ],
 
     'ses' => [

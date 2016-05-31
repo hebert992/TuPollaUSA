@@ -35,9 +35,10 @@ class AuthController extends Controller
         // INICIO DE SESION -----------
         $correo = $request->input('email');
         $pass = $request->input('password');
+        $recuerdo= $request->input('remember');
       
         
-        if (Auth::attempt(['email' => $correo,'password' =>$pass, 'email_confirmado' => 1])) {
+        if (Auth::attempt(['email' => $correo,'password' =>$pass, 'email_confirmado' => 1],$recuerdo)) {
        
        
             return redirect()->to("/home");
@@ -53,6 +54,14 @@ class AuthController extends Controller
              return redirect()->back()->withInput();
 }
     }
-    
-   
+
+    public  function OnlyAdmin()
+    {
+        if(Auth::user()->rol != "admin")
+        {
+            Session::flash('flash_danger',"Error Sin privilegios suficientes!");
+
+        }
+
+    }
 }

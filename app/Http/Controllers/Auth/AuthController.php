@@ -57,6 +57,10 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
+            'date' => 'required|max:113',
+            'nick' => 'required|max:255|unique:users',
+            'apellido' => 'required|max:255',
+            'telefono' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -71,21 +75,28 @@ class AuthController extends Controller
     protected function create(array $data)
     {
          
-         $confirmation_code1 = str_random(40);
+ $confirmation_code1 = str_random(40);
      
-                 
+                 $full_name = $data['name']. " ".$data['apellido'];
          
          
          
     $codigo =(["confirmation_code1"=>"$confirmation_code1",]);
     //----------- enviar mail antes de retornar 
     Mail::send("emails.verify", $codigo, function($message) use ($data) {
-        $message->to($data['email'], $data['name'])
+        $message->to($data['email'], $data['name']." ".$data['apellido'])
         ->subject("Correo de VERIFICACION");
     });
     //---------- mail enviando ahora se procede a crear los registros
         return User::create([
-            'name' => $data['name'],
+            'name' => $full_name,
+            'nick' => $data['nick'],
+            'telefono' => $data['telefono'],
+
+
+            'pais' => $data['pais'],
+            'ciudad' => $data['ciudad'],
+            'direccion' => $data['direccion'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'rol' => "usuario",

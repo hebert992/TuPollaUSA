@@ -1,0 +1,3 @@
+Celeste Principal  #0082ED rgba (0,130,237,0,25)
+Celeste del hover #49A3ED  rgba (73,163,237,0.25)
+

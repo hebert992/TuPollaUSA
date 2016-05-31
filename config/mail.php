@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'mail.tupollausa.com'),
+    'host' => env('MAIL_HOST', 'sc4.conectarhosting.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => "No-Responder@tupollausa.com", 'name' => "No responder"],
+    'from' => ['address' => "tupollausa@gmail.com", 'name' => "Tu Polla USA"],
 
     /*
     |--------------------------------------------------------------------------

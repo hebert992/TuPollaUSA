@@ -7,6 +7,10 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Recarga para {{$usuario->name}} </div>
                      <div class="panel-body">
+                         @if(Session::has('flash_danger'))
+
+                             <div class="alert alert-danger" role="alert">{{Session::get('flash_danger')}}</div>
+                         @endif
                          <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/recarga') }}">
                              {!! csrf_field() !!}
                              <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -26,6 +30,15 @@
 
                                  </div>
                              </div>
+                             <div class="form-group{{ $errors->has('nick') ? ' has-error' : '' }}">
+                                 <label class="col-md-4 control-label">Nick</label>
+
+                                 <div class="col-md-6">
+                                     <input type="text" class="form-control" name="nick" value="{{ $usuario->nick }}" readonly>
+
+
+                                 </div>
+                             </div>
 
                              <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                  <label class="col-md-4 control-label">Correo</label>
@@ -37,41 +50,52 @@
                                  </div>
                              </div>
 
-                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                             <div class="form-group{{ $errors->has('monto') ? ' has-error' : '' }}">
                                  <label class="col-md-4 control-label">Monto BSF</label>
 
                                  <div class="col-md-6">
                                      <input type="text" class="form-control" name="monto">
+                                     @if ($errors->has('monto'))
+                                         <span class="help-block">
+                                        <strong>{{ $errors->first('monto') }}</strong>
+                                    </span>
+                                     @endif
 
                                  </div>
                              </div>
 
-                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                             <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
                                  <label class="col-md-4 control-label">Tipo de Transaccion</label>
 
                                  <div class="col-md-6">
                                      <select class="form-control" name="tipo">
+                                         <option>Seleciona el tipo de Transaccion</option>
 
                                      <option>transferencia</option>
                                      <option>efectivo</option>
                                      <option>deposito</option>
 
                                      </select>
+                                     @if ($errors->has('tipo'))
+                                         <span class="help-block">
+                                        <strong>{{ $errors->first('tipo') }}</strong>
+                                    </span>
+                                     @endif
 
 
                                  </div>
                              </div>
 
 
-                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                             <div class="form-group{{ $errors->has('referencia') ? ' has-error' : '' }}">
                                  <label class="col-md-4 control-label">Referencia</label>
 
                                  <div class="col-md-6">
                                      <input type="text" class="form-control" name="referencia">
 
-                                     @if ($errors->has('password'))
+                                     @if ($errors->has('referencia'))
                                          <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong>{{ $errors->first('referencia') }}</strong>
                                     </span>
                                      @endif
                                  </div>

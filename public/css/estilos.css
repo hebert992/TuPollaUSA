@@ -1,0 +1,174 @@
+/*Todo*/
+@import url("fuentes.css");
+
+body{
+	background:url(../img/back.png);
+	padding-top:60px;
+}
+
+.color1{
+	background: rgba(0,130,237,0.25);
+	color:white;
+}
+.color2{
+	background: rgba(255,255,255,0.25);
+	color:white;
+}
+
+
+.content{
+	background: rgba(255,255,255,0.25);
+	color:white;
+}
+
+.content .table, .panel-body{
+color: black;
+background: rgba(255,255,255,0.25);
+text-align: center;
+}
+
+.panel-body{
+color:black;
+background: rgba(255,255,255,0.25);
+text-align: left;
+}
+
+footer{
+	width:100%;
+	background: #000;
+	text-align: center;
+	font-family: athelas;
+	font-size: 16px;
+}
+
+footer li{
+	list-style: none;
+}
+
+.page-header h3 a{
+	color:white;
+	text-align:center;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.page-header h3 a:hover{
+	color:white;
+	text-align:center;
+	padding: 10px;
+	background: rgba(0,0,0,0.75);
+}
+
+.page-header, .panel h3{
+	text-align: center;
+	font-size: 35px;
+	font-family: westernB;
+	font-style: bold;
+	color: white;
+
+}
+	
+
+}
+
+.panel{
+	color: black
+}
+
+footer img{
+	width: 100px;
+	height: auto;
+}
+footer p{
+	color: white;
+}
+
+.navbar-brand{
+	font-family: westernB;
+	font-size: 35px;
+	color: white;
+}
+.nav{
+	font-family: athelas;
+	font-size: 18px;
+}
+
+
+.caballo1{
+	background: red;
+	color: black;
+	font-size: 18px;
+}
+.caballo2{
+	background: white;
+	color: black;
+	font-size: 18px;
+}
+.caballo3{
+	background: blue;
+	color: white;
+	font-size: 18px;
+}
+.caballo4{
+	background: yellow;
+	color: black;
+	font-size: 18px;
+}
+.caballo5{
+	background: green;
+	color: white;
+	font-size: 18px;
+}
+.caballo6{
+	background: black;
+	color: yellow;
+	font-size: 18px;
+}
+.caballo7{
+	background: #ff8000;
+	color: black;
+	font-size: 18px;
+}
+.caballo8{
+	background: #ff82e2;
+	color: black;
+	font-size: 18px;
+}
+.caballo9{
+	background: #66b6d9;
+	color: black;
+	font-size: 18px;
+}
+.caballo10{
+	background: #990e94;
+	color: white;
+	font-size: 18px;
+}
+.caballo11{
+	background: gray;
+	color: white;
+	font-size: 18px;
+}
+.caballo12{
+	background: #26A032;
+	color: black;
+	font-size: 18px;
+}
+
+li{
+	list-style: none;
+	margin-left:0px; 
+}
+
+.boton{
+	margin:2px;
+	padding: 5px;
+	background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+16,2989d8+46,207cca+72,207cca+89,207cca+89,207cca+99 */
+	background: rgb(30,87,153); /* Old browsers */
+	background: -moz-linear-gradient(left,  rgba(30,87,153,1) 16%, rgba(41,137,216,1) 46%, rgba(32,124,202,1) 72%, rgba(32,124,202,1) 89%, rgba(32,124,202,1) 89%, rgba(32,124,202,1) 99%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  rgba(30,87,153,1) 16%,rgba(41,137,216,1) 46%,rgba(32,124,202,1) 72%,rgba(32,124,202,1) 89%,rgba(32,124,202,1) 89%,rgba(32,124,202,1) 99%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  rgba(30,87,153,1) 16%,rgba(41,137,216,1) 46%,rgba(32,124,202,1) 72%,rgba(32,124,202,1) 89%,rgba(32,124,202,1) 89%,rgba(32,124,202,1) 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#207cca',GradientType=1 ); /* IE6-9 */
+	color: white;
+	border-radius: 5px;
+}
