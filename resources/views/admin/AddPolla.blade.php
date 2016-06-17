@@ -84,10 +84,10 @@
 
 
                             <div class="form-group{{ $errors->has('fecha') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Fecha de Corrida</label>
+                                <label class="col-md-4 control-label">Fecha y Hora</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control datepicker" placeholder="1999/12/31" name="fecha" value="{{ old('fecha') }}">
+                                    <input type="text" class="form-control datepicker" id="datetimepicker" placeholder="1999/12/31 14:32" name="fecha" value="{{ old('fecha') }}">
 
                                     @if ($errors->has('fecha'))
                                         <span class="help-block">
@@ -97,31 +97,19 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('hora') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Hora de la Corrida</label>
 
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control time" name="hora" id="#time" placeholder="Ejemplo : 21:41:00" value="{{ old('hora') }}">
-
-                                    @if ($errors->has('hora'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('hora') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
 
 
                             <div class="form-group{{ $errors->has('terreno') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">Terreno</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" name="tipo">
+                                    <select class="form-control" name="terreno">
                                         <option>Seleciona el Terreno de la Carrera</option>
 
-                                        <option>arena</option>
-                                        <option>grava</option>
-                                        <option>sesped</option>
+                                        <option value="arena">arena</option>
+                                        <option value="grava">grava</option>
+                                        <option value="cesped">cesped</option>
 
                                     </select>
                                     @if ($errors->has('tipo'))
@@ -135,7 +123,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('caballos_numero') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Cantida de Caballos</label>
+                                <label class="col-md-4 control-label">Numero de Corrida</label>
 
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="caballos_numero" value="{{ old('caballos_numero') }}">
@@ -167,13 +155,17 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script>
 
-        $('.datepicker').datepicker({
-            format: "yyyy/mm/dd",
-            language: "es",
-            autoclose: true
+
+    <script src="{{asset('DateTimePicker/jquery.datetimepicker.full.js')}}"></script>
+    <script>
+        $.datetimepicker.setLocale('es');
+        $('#datetimepicker').datetimepicker({
+            formatDate:'Y.m.d',
+            dayOfWeekStart : 1,
+            lang:'en',
+            disabledDates:['1986/01/08','1986/01/09','1986/01/10'],
+            startDate:	'now'
         });
     </script>
 @endsection

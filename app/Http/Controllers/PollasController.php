@@ -12,27 +12,25 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Mail;
 class PollasController extends Controller
 {
+
     public function Test()
     {
         $pollas = pollas::find(1)->caballos;
         dd( $pollas);
     }
     public function index()
-    { $fechaactual = Carbon::now()->toDateString();
-        $horaactual = Carbon::now()->addMinute(10)->toDateString();
-
-
-
-
-        $pollas = DB::table("pollas")->where("fecha",">",$fechaactual)->where("hora",">","$horaactual")->get();
+    {$horaactual = Carbon::now()->addMinute(40);
+        $caballos = caballos::all();
+        $pollas = DB::table("pollas")->where("fecha", ">", $horaactual)->orderby('created_at','ASC')->take(6)->get();
         //$pollas =pollas::validas();
 
 
@@ -41,9 +39,19 @@ class PollasController extends Controller
     }
     public function CrearVista()
     {
-        if(Auth::user()->rol)
+        if(Auth::guest())
+        {
+            Session::flash("flash_danger", "Porfavor inicia sesion");
+            return Redirect("/login");
+        }
+        if(Auth::user()->rol==="admin")
         {
             return view("admin.AddPolla");
+        }
+        else
+        {
+            Session::flash("flash_danger", "privilegios insuficientes");
+            return Redirect("/login");
         }
     }
     public function PollaCaballo($ID)
@@ -58,7 +66,7 @@ class PollasController extends Controller
 
             $v = Validator::make($request->all(), [
 
-                'name' => 'required',
+                'name' => 'required|alpha_dash',
                 'jinete' => 'required',
                 'propietario' => 'required',
                 'peso' => 'required',
@@ -82,8 +90,72 @@ class PollasController extends Controller
         }
 
     }
+
+    public function VistaEditarPolla($ID)
+    {
+        if(Auth::user()->rol==="admin") {
+            $polla = pollas::findOrFail($ID);
+            return view("admin.EditPolla", compact("polla"));
+        }
+        else
+        {
+            Session::flash("flash_danger", "Error Sin privilegios suficientes!");
+            return Redirect("/");
+        }
+
+
+    }
+
+    public function EditarPolla(Request $request)
+    {
+        if(Auth::user()->rol==="admin") {
+            $polla = pollas::findOrFail($request->get("id"));
+            $polla->fill($request->all());
+            $polla->save();
+            Session::flash('flash_success',"Caballo $polla->name Editado con exito!");
+            return Redirect("/admin/polla");
+        }
+        else
+        {
+            Session::flash("flash_danger", "Error Sin privilegios suficientes!");
+            return Redirect("/");
+        }
+
+    }
+    public function VistaEditarCaballo($ID)
+    {
+        if(Auth::user()->rol==="admin") {
+            $caballo = caballos::findOrFail($ID);
+            return view("admin.EditCaballos", compact("caballo"));
+        }
+        else
+        {
+            Session::flash("flash_danger", "Error Sin privilegios suficientes!");
+            return Redirect("/");
+        }
+
+    }
+
+    public function EditarCAballo(Request $request)
+    {
+        if(Auth::user()->rol==="admin") {
+            $caballo = caballos::findOrFail($request->get("id"));
+            $caballo->fill($request->all());
+            $caballo->save();
+            Session::flash('flash_success',"Caballo $caballo->name Editado con exito!");
+            return Redirect("/admin/polla");
+
+        }
+        else
+        {
+            Session::flash("flash_danger", "Error Sin privilegios suficientes!");
+            return Redirect("/");
+        }
+
+    }
     public function CrearCrear(Request $request)
     {
+
         if (Auth::user()->rol === "admin")
         {
 
@@ -92,11 +164,10 @@ class PollasController extends Controller
                 'name' => 'required',
                 'hipodromo' => 'required',
                 'fecha' => 'required',
-                'hora' => 'required',
-                'pago' => 'required|numeric',
+                'pago' => 'required',
                 'caballos_numero' => 'required|numeric',
                 'tipo' => "required|in:arena,grava,cesped",
-                'distancia' => 'required|numeric',
+                'distancia' => 'required',
 
 
             ]);
@@ -136,16 +207,21 @@ class PollasController extends Controller
            return  Redirect("/login");
         }
         else {
-            $fechaactual = Carbon::now()->toDateString();
-            $horaactual = Carbon::now()->addMinute(10)->toDateString();
-            $caballos = caballos::all();
 
-            $pollas = DB::table("pollas")->where("fecha", ">", $fechaactual)->where("hora", ">", "$horaactual")->orderby('created_at','DESC')->take(6)->get();
+            $horaactual = Carbon::now()->addMinute(40);
+            $caballos = caballos::all();
+            $pollas = DB::table("pollas")->where("fecha", ">", $horaactual)->orderby('created_at','ASC')->take(6)->get();
+
+
+
+            }
+
             return view("Apuesta", compact("pollas"), compact("caballos"));
         }
-    }
     public function CrearApuesta(Request $request)
     {
+
+
 
         if(Auth::guest())
         {
@@ -158,7 +234,7 @@ class PollasController extends Controller
             Session::flash("flash_danger", "Apuestas Temporalmente desabilitadas");
             return Redirect("/home");
         }
-        elseif(Auth::user()->coins >0)
+        elseif( Auth::user()->coins>0)
         {
 
             $v = Validator::make($request->all(), [
@@ -179,11 +255,17 @@ class PollasController extends Controller
                 son seis(6) carreras");
                 return redirect()->back()->withInput()->withErrors($v->errors());
             }
-            apuesta::create($request->all());
+            $apu = apuesta::create($request->all());
             $user = User::findOrFail(Auth::user()->id);
             $user->coins = $user->coins -1;
             $user->save();
-            Session::flash("flash_success", "Tu apuesta fue cargada con exito!!");
+            Session::flash("flash_success", "Tu apuesta fue cargada con exito!!   Tu correo de confirmacion llegara en 5 Minutos");
+
+               $this->factura($apu,$user);
+
+
+
+
             return Redirect("/");
         }
         else
@@ -194,12 +276,27 @@ class PollasController extends Controller
 
 
     }
+    public function factura($factura,$user)
+    {
+        $view =  \View::make('report.apuesta', compact( 'factura'))->render();
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper('a6', 'landscape');
+        $pdf->save("factura".$user->id.".pdf");
+        $dato=(["nick"=> $user->nick]);
+        Mail::send("emails.apuesta", $dato, function($message) use ($pdf,$factura,$user)  {
+            $message->to("$user->email", $user->nick)
+                ->subject("Confirmacion de apuesta ID: $factura->id_factura")
+                ->attach("factura".$user->id.".pdf");
 
+        });
+
+    }
     public function VistaResultados($ID)
     {
-        $valido = resultados::unresultado($ID);
-        if($valido)
+        $valido = resultados::find($ID);
+        if(!empty($valido))
         {
+
             Session::flash("flash_danger","ERROR! ya esta carrera tiene resultados");
            return  Redirect("/admin/polla");
         }
@@ -208,65 +305,75 @@ class PollasController extends Controller
             return view("admin.AddResultado", compact("polla"));
         }
     }
-
     public function CrearResultados(Request $request)
     {
-
-        $v = Validator::make($request->all(), [
-
-            'win' => 'required|numeric',
-            'pago_win' => 'required',
-            'place' => 'required|numeric',
-            'pago_place' => 'required',
-            'show' => 'required|numeric',
-            'pago_show' => 'required',
-
-
-        ]);
-        if ($v->fails()) {
-            return redirect()->back()->withInput()->withErrors($v->errors());
+        if(Auth::guest())
+        {
+            Session::flash("flash_danger", "Porfavor inicia sesion");
+            return Redirect("/login");
         }
+        if(Auth::user()->rol==="admin") {
 
-        resultados::create($request->all());
-        Session::flash("flash_success", "Resultados agregados con exito!!");
-        return Redirect("/admin/polla");
 
+            $v = Validator::make($request->all(), [
+
+                'win' => 'required|numeric',
+                'pago_win' => 'required',
+                'place' => 'required|numeric',
+                'pago_place' => 'required',
+                'show' => 'required|numeric',
+                'pago_show' => 'required',
+
+
+            ]);
+            if ($v->fails()) {
+                return redirect()->back()->withInput()->withErrors($v->errors());
+            }
+
+            resultados::create($request->all());
+            Session::flash("flash_success", "Resultados agregados con exito!!");
+            return Redirect("/admin/polla");
+        }else
+        {
+            Session::flash("flash_danger", "Error Sin privilegios suficientes!");
+            return Redirect("/");
+        }
     }
-
     public function TablaPosiciones()
     {
        // $tablapolla = ["id_polla1","id_polla2","id_polla3","id_polla4","id_polla5","id_polla6"];
-        $pollas = DB::table("pollas")->orderby('created_at','DESC')->take(6)->get();
+        $pollas = DB::table("pollas")->orderby('created_at','ASC')->take(6)->get();
         $resultado = array();
+for($n=0;$n<6;$n++)
+{
+    $apuesta1 = DB::table("apuesta")->where("id_polla1",$pollas[0]->id_polla)->get();
+}
 
-        $apuesta1 = DB::table("apuesta")->where("id_polla1",$pollas[0]->id_polla)->get();
-        /* $apuesta2 = DB::table("apuesta")->where("id_polla2",$pollas[1]->id_polla)->get();
-        $apuesta3 = DB::table("apuesta")->where("id_polla3",$pollas[2]->id_polla)->get();
-        $apuesta4 = DB::table("apuesta")->where("id_polla4",$pollas[3]->id_polla)->get();
-        $apuesta5 = DB::table("apuesta")->where("id_polla5",$pollas[4]->id_polla)->get();
-        $apuesta6 = DB::table("apuesta")->where("id_polla6",$pollas[5]->id_polla)->get();
 
-        dd($apuesta1,$apuesta2,$apuesta3,$apuesta4,$apuesta5,$apuesta6);
-        */
-        //OBTENER LOS RESULTADOS DE LAS ULTIMAS SEIS POLLAS
+        $j=0;
         for($c=0;$c<6;$c++)
         {
-            $resultado[$c] = DB::table("resultado")->where("id_polla",$pollas[$c]->id_polla)->get();
+            $temp = DB::table("resultado")->where("id_polla",$pollas[$c]->id_polla)->get();
+            if(!empty($temp)) {
+
+                $resultado[$j] = $temp;
+                $j++;
+            }
+
         }
         $lenght = sizeof($apuesta1);
         $tablasfinales= array();
-        $t = count($resultado);
+       $countresultados = count($resultado);
 
-        if(empty($resultado[5]))
-        {
-            Session::flash("flash_danger","Aun no se publican todos los resultados!!");
-            return Redirect("/home");
-        }
+
+
+
+
 
 
           for($a=0;$a<$lenght;$a++)
              {$total=0;
-                 for($b=0;$b<6;$b++)
+                 for($b=0;$b<$countresultados;$b++)
                  {
 
 
@@ -381,14 +488,11 @@ $n= count($definitiva);
 
        return view("ganadores",compact("definitiva"),compact("final"));
     }
-
     public function VistaProgramacion()
     {
-        $fechaactual = Carbon::now()->toDateString();
-        $horaactual = Carbon::now()->addMinute(10)->toDateString();
+        $horaactual = Carbon::now()->addMinute(40);
         $caballos = caballos::all();
-
-        $pollas = DB::table("pollas")->where("fecha", ">", $fechaactual)->where("hora", ">", "$horaactual")->orderby('created_at','DESC')->take(6)->get();
+        $pollas = DB::table("pollas")->where("fecha", ">", $horaactual)->orderby('created_at','ASC')->take(6)->get();
         return view("programacion", compact("pollas"), compact("caballos"));
 
     }
@@ -398,6 +502,32 @@ $n= count($definitiva);
         {
             $caballo = caballos::findOrFail($ID);
             return response()->json($caballo);
+        }
+
+    }
+
+    public function BorrarCaballo($ID)
+    {
+        if(Auth::user()->rol==="admin")
+        {
+            $caballo = caballos::findOrFail($ID);
+
+            $caballo->forceDelete();
+            Session::flash("flash_success", "El caballo fue  ELIMINADo!!");
+            return Redirect("admin/polla");
+
+        }
+
+    }
+    public function BorrarPolla($ID)
+    {
+        if(Auth::user()->rol==="admin")
+        {
+
+            pollas::destroy($ID);
+            Session::flash("flash_success", "La carrera ELIMINADA!!");
+            return Redirect("admin/polla");
+
         }
 
     }

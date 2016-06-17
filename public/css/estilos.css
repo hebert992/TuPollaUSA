@@ -2,8 +2,8 @@
 @import url("fuentes.css");
 
 body{
-	background:url(../img/back.png);
-	padding-top:60px;
+	background: url(../img/back.png);
+	padding-top: 60px;
 }
 
 .color1{
@@ -21,7 +21,12 @@ body{
 	color:white;
 }
 
-.content .table, .panel-body{
+.content .panel{
+	margin-top:10px;
+	text-align:center;
+}
+
+.content, .table, .panel-body{
 color: black;
 background: rgba(255,255,255,0.25);
 text-align: center;
@@ -69,7 +74,6 @@ footer li{
 }
 	
 
-}
 
 .panel{
 	color: black
@@ -163,8 +167,7 @@ li{
 .boton{
 	margin:2px;
 	padding: 5px;
-	background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+16,2989d8+46,207cca+72,207cca+89,207cca+89,207cca+99 */
-	background: rgb(30,87,153); /* Old browsers */
+	background:rgb(30,87,153); /* Old browsers */
 	background: -moz-linear-gradient(left,  rgba(30,87,153,1) 16%, rgba(41,137,216,1) 46%, rgba(32,124,202,1) 72%, rgba(32,124,202,1) 89%, rgba(32,124,202,1) 89%, rgba(32,124,202,1) 99%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(left,  rgba(30,87,153,1) 16%,rgba(41,137,216,1) 46%,rgba(32,124,202,1) 72%,rgba(32,124,202,1) 89%,rgba(32,124,202,1) 89%,rgba(32,124,202,1) 99%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(to right,  rgba(30,87,153,1) 16%,rgba(41,137,216,1) 46%,rgba(32,124,202,1) 72%,rgba(32,124,202,1) 89%,rgba(32,124,202,1) 89%,rgba(32,124,202,1) 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */

@@ -37,8 +37,8 @@
                                 <th>Hipodromo</th>
                                 <th>Terreno</th>
                                 <th>Pago</th>
-                                <th>Fecha</th>
-                                <th>Hora</th>
+                                <th>Fecha y Hora</th>
+
                                 <th>Distancia</th>
                                 <th>Acciones</th>
 
@@ -51,7 +51,6 @@
                                     <td>{{$polla->terreno}}</td>
                                     <td>{{$polla->pago}}</td>
                                     <td>{{$polla->fecha}}</td>
-                                    <td>{{$polla->hora}}</td>
                                     <td>{{$polla->distancia}}</td>
 
                                     <td>
@@ -63,6 +62,8 @@
                                                 <li><a href="{{url("/admin/polla/$polla->id_polla/caballos")}}">Caballos</a></li>
                                                 <li><a href="{{url("/admin/add/caballo/$polla->id_polla")}}">Agregar Caballos</a></li>
                                                 <li><a href="{{url("/admin/add/resultado/$polla->id_polla")}}">Agregar Resultados</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li><a href="{{url("/admin/polla/editar/$polla->id_polla")}}">Editar Carrera</a></li>
 
                                             </ul>
 

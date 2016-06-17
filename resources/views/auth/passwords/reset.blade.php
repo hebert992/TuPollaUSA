@@ -6,7 +6,16 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Reiniciar Contraseña</div>
-
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <strong>OOPS!</strong> Porfavor Soluciona estos problemas.<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
                         {!! csrf_field() !!}
@@ -17,7 +26,7 @@
                             <label class="col-md-4 control-label">Correo</label>
 
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ $email or old('email') }}">
+                                <input type="email" class="form-control" name="email" value="{{ $email or old('email') }}"readonly>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">

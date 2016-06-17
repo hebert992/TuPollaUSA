@@ -66,7 +66,7 @@ class RecargasController extends Controller
 
         //VALIDANDO TIPO USUARIO
         if ($master->rol === "tienda") {
-            if ($master->id !== $cliente->id_master) {
+            if ($master->id != $cliente->id_master) {
                 Session::flash("flash_danger", "Privilegios insuficientes");
                 return Redirect("/admin/usuarios");
             }//endif

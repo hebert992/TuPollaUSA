@@ -52,15 +52,15 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('posicion') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">Posicion</label>
 
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="posicion" value="{{$count }}"  readonly>
 
-                                    @if ($errors->has('name'))
+                                    @if ($errors->has('posicion'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('posicion') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -69,7 +69,7 @@
                                 <label class="col-md-4 control-label">Propietario</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="propietario" placeholder="Hebert Ramirez" value="{{ old('porpietario') }}">
+                                    <input type="text" class="form-control" name="propietario" placeholder="" value="{{ old('porpietario') }}">
 
                                     @if ($errors->has('propietario'))
                                         <span class="help-block">
@@ -82,7 +82,7 @@
                                 <label class="col-md-4 control-label">Entrenador</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="entrenador" placeholder="Hebert Ramirez" value="{{ old('entrenador') }}">
+                                    <input type="text" class="form-control" name="entrenador" placeholder="" value="{{ old('entrenador') }}">
 
                                     @if ($errors->has('entrenador'))
                                         <span class="help-block">
@@ -96,7 +96,7 @@
                                 <label class="col-md-4 control-label">Jinete</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="jinete" placeholder="Carlos Paternina" value="{{ old('jinete') }}">
+                                    <input type="text" class="form-control" name="jinete" placeholder="" value="{{ old('jinete') }}">
 
                                     @if ($errors->has('jinete'))
                                         <span class="help-block">
@@ -145,7 +145,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
     <script>
 
         $('.datepicker').datepicker({

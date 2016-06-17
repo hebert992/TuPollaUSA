@@ -9,12 +9,12 @@
         </div>
     <form action="{{url("/apuestas")}}" method="post">
         {{csrf_field()}}
-    <input type="hidden" class="form-control" name="id_master" value="{{ $count=0 }}">
+    <input type="hidden" class="form-control" name="id_nada" value="{{ $count=0 }}">
     <input type="hidden" class="form-control" name="id_cliente" value="{{Auth::user()->id}}">
     @foreach($pollas as $polla)
         <div class="panel panel-default">
-            <div class="panel-heading">Carrera {{$polla->id_polla}} {{$polla->hipodromo}}   TupollaUSA.com {{$polla->fecha}} {{$polla->hora}}</div>
-            <input type="hidden" class="form-control" name="id_master" value="{{ $count+=1 }}">
+            <div class="panel-heading">Carrera {{$polla->id_polla}} {{$polla->hipodromo}}   TupollaUSA.com {{$polla->fecha}} </div>
+            <input type="hidden" class="form-control" name="id_nada" value="{{ $count+=1 }}">
             <input type="hidden" class="form-control" name="id_polla{{$count}}" value="{{ $polla->id_polla }}">
 
             <div class="panel-body">
@@ -42,9 +42,11 @@
             <div class="col-md-6 col-md-offset-4">
                 <button type="submit" class="btn btn-primary">
                     <i class="btn-lg">APOSTAR!</i>
+                    <br>
                 </button>
             </div>
         </div>
+
     </form>
 
     <script src="{{asset('js/caballos.js')}}"></script>

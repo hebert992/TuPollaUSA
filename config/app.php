@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Caracas',
 
     /*
     |--------------------------------------------------------------------------
@@ -147,6 +147,13 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+        SantiGraviano\LaravelMercadoPago\Providers\MercadoPagoServiceProvider::class,
+        Illuminate\View\ViewServiceProvider::class,
+        Illuminate\Html\HtmlServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        Mitul\Generator\GeneratorServiceProvider::class,
+
 
         /*
          * Application Service Providers...
@@ -204,6 +211,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+        'MP' => SantiGraviano\LaravelMercadoPago\Facades\MP::class,
+
+        'HTML'  => Illuminate\Html\HtmlFacade::class,
+        'Flash' => Laracasts\Flash\Flash::class,
 
     ],
 

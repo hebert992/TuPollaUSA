@@ -61,6 +61,7 @@
                                          <ul class="dropdown-menu">
                                              <li><a href="/admin/recarga/{{$user->id}}">Recarga</a></li>
                                              <li><a href="/admin/editar/{{$user->id}}">Editar</a></li>
+                                             <li><a href="/tienda/apostar/{{$user->id}}">Apostar</a></li>
                                              <li role="separator" class="divider"></li>
                                              <li><a data-toggle="modal" data-target="#{{$user->id}}" href="#">Eliminar</a></li>
                                          </ul>
@@ -118,5 +119,5 @@
             </div>
         </div>
     </div>
-</div>
+
 @endsection

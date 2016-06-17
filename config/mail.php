@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'sc4.conectarhosting.com'),
+    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 465),
+    'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => "tupollausa@gmail.com", 'name' => "Tu Polla USA"],
+    'from' => ['address' => "no-responder@tupollausa.com", 'name' => "Tu Polla USA"],
 
     /*
     |--------------------------------------------------------------------------

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\apuesta;
 use App\recargas;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
@@ -189,6 +190,12 @@ switch($usuariovalido->rol)
                 break;
 
         }//ENDSWITCH
+    }
+    public function ListaApuesta()
+    {
+        $apuestas = apuesta::unit(Auth::user()->id)->paginate();
+        return view("ListApuestas",compact("apuestas"));
+
     }
 
 

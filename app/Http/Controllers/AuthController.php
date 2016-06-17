@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
@@ -38,10 +39,10 @@ class AuthController extends Controller
         $recuerdo= $request->input('remember');
       
         
-        if (Auth::attempt(['email' => $correo,'password' =>$pass, 'email_confirmado' => 1],$recuerdo)) {
+        if (Auth::attempt(['email' => $correo,'password' =>$pass, 'email_confirmado' => 1],true)) {
        
        
-            return redirect()->to("/home");
+            return redirect()->to("/");
            
             
     }
@@ -64,4 +65,5 @@ class AuthController extends Controller
         }
 
     }
+
 }

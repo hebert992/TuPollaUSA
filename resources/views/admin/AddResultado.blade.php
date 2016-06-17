@@ -120,7 +120,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
     <script>
 
         $('.datepicker').datepicker({

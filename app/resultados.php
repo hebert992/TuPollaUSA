@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class resultados extends Model
 {
     protected $table ="resultado";
-    protected $primaryKey="id_resultado";
+    protected $primaryKey="id_polla";
 
 
     protected $fillable = [

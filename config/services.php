@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => "https://api.mailgun.net/v3/tupollausa.com",
-        'secret' => "key-1c497a4b04ac33f3fc39a2f0ddb1883d",
+        'domain' => "tupollausa.com",
+        'secret' => "key-29b14665d2c610a0d01df655d3e8d8f8",
     ],
 
     'ses' => [

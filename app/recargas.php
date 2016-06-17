@@ -14,7 +14,7 @@ class recargas extends Model
     ];
     public static function ValorCoins()
     {
-        return 3000;
+        return 2;
     }
     public function scopeName($query,$name)
     {

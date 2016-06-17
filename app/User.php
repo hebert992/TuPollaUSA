@@ -7,6 +7,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
@@ -50,6 +51,12 @@ protected $table = 'users';
     {
 $query->where("id_master",$id);
 
+    }
+
+    public static function Email($email)
+    {
+        $user = DB::table("users")->where("email",$email)->get();
+        return $user;
     }
     public function setPasswordAttribute($value)
     {

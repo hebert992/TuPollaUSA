@@ -1,0 +1,20 @@
+[
+  {
+    "field":"titulo:string",
+    "type":"text",
+    "validations": "required"
+  },
+  {
+    "field":"contenido:text",
+    "type":"textarea",
+    "validations": "required"
+  },
+
+  {
+    "field":"autor:text",
+    "type":"text",
+    "validations": "required"
+  }
+
+
+]

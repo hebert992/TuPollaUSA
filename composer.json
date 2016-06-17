@@ -7,7 +7,12 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "laravelcollective/html": "5.2.*"
+        "laravelcollective/html": "5.2.*",
+        "barryvdh/laravel-dompdf": "0.6.*",
+        "guzzlehttp/guzzle": "~5.3|~6.0",
+        "santigraviano/laravel-mercadopago": "^1.0",
+        "mitulgolakiya/laravel-api-generator": "^1.3"
+
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
