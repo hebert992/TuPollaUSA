@@ -24,7 +24,7 @@
 .msg_box{
 
 
-    width:400px;
+    width:700px;
     background:white;
     border-radius:5px 5px 0px 0px;
     z-index: 11111;
@@ -35,8 +35,9 @@
 }
 
 .msg_body{
+    color: #0a0a0a;
     background:white;
-    height:320px;
+    height:410px;
     font-size:12px;
     padding:15px;
     overflow:auto;
@@ -44,8 +45,9 @@
 }
 .msg_input{
     width:100%;
+    color: #0a0a0a;
     border: 1px solid white;
-    border-top:1px solid #DDDDDD;
+    border-top:2px solid #DDDDDD;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;

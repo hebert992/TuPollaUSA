@@ -40,13 +40,29 @@
     @endforeach
         <div class="form-group">
             <div class="col-md-6 col-md-offset-4">
-                <button type="submit" class="btn btn-primary">
+                <button type="button" data-target="#modal" data-toggle="modal" class="btn btn-primary">
                     <i class="btn-lg">APOSTAR!</i>
                     <br>
                 </button>
             </div>
         </div>
-
+        <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">CONFIRMACION</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Estas seguro de tu apuesta?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">APOSTAR</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     </form>
 
     <script src="{{asset('js/caballos.js')}}"></script>

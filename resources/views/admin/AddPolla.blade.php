@@ -107,14 +107,14 @@
                                     <select class="form-control" name="terreno">
                                         <option>Seleciona el Terreno de la Carrera</option>
 
-                                        <option value="arena">arena</option>
-                                        <option value="grava">grava</option>
-                                        <option value="cesped">cesped</option>
+                                        <option value="Turf">Turf</option>
+                                        <option value="Dirf">Dirt</option>
+
 
                                     </select>
-                                    @if ($errors->has('tipo'))
+                                    @if ($errors->has('terreno'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('tipo') }}</strong>
+                                        <strong>{{ $errors->first('terreno') }}</strong>
                                     </span>
                                     @endif
 

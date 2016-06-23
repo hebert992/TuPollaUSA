@@ -138,7 +138,8 @@ Route::get('/llamado', 'ChatController@Llamado');
 
 
 
-
+//lista apuestas
+Route::get('/admin/apuestas/list', 'ApuestasController@ListApuestas');
 
 
 

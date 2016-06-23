@@ -16,5 +16,17 @@ class apuesta extends Model
     {
        $query->where("id_cliente",$ID);
     }
+    public function scopeName($query,$name)
+    {
+        if (trim($name) != "")
+        {
+            $query->where('id_apuesta', "LIKE", "%$name%");
+
+        }
+    }
+    public function scopeTienda($query,$tienda)
+    {
+        $query->where("id_master",$tienda);
+    }
 
 }

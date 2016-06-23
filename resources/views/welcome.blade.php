@@ -2,36 +2,37 @@
 
 @section('content')
     @include("parcial.Mensajes")
-    <div class="panel color1 col-md-4">
-        <p>
-        <div class ="page-header">
-            <h3><a href="#">Chat general</a></h3>
-        </div>
-
-        @if (Auth::guest())
-            <center>
-                <p><h2><b>Porfavor</b> </h2></p>
-                <p><h4><b>Inicia sesion para usar el Chat</b></h4></p>
-                <p><h4><b>TuPollaUSA</b></h4></p>
-            </center>
-    </div>
-
-    @else
-
-        <div class="msg_wrap">
-            <div id="chat" class="msg_body">
-
+    <div class="row">
+        <div class="panel2 color1 col-md-4">
+            <p>
+            <div class ="page-header">
+                <h3><a href="#">Chat TuPollaUSA</a></h3>
             </div>
-            <div class="msg_footer"><textarea class="msg_input" rows="4"></textarea></div>
+
+            @if (Auth::guest())
+                <center>
+                    <p><h2><b>Porfavor</b> </h2></p>
+                    <p><h4><b>Inicia sesion para usar el Chat</b></h4></p>
+                    <p><h4><b>TuPollaUSA</b></h4></p>
+                </center>
         </div>
-        </div>
+
+        @else
+
+            <div class="msg_wrap">
+                <div id="chat" class="msg_body">
+
+                </div>
+                <div class="msg_footer"><textarea class="msg_input" rows="4"></textarea></div>
+            </div>
+    </div>
 
     @endif
 
 
 
 
-    <div class="panel col-md-8 content ">
+    <div class="panel3 col-md-8 content ">
 
         <p>
         <h3 class="text-center">Inicio</h3>

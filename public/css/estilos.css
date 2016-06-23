@@ -11,13 +11,13 @@ body{
 	color:white;
 }
 .color2{
-	background: rgba(255,255,255,0.25);
+	background: rgba(245, 245, 245, 0.41);
 	color:white;
 }
 
 
 .content{
-	background: rgba(255,255,255,0.25);
+	background: rgba(245, 245, 245, 0.41);
 	color:white;
 }
 
@@ -26,15 +26,15 @@ body{
 	text-align:center;
 }
 
-.content, .table, .panel-body{
+.table, .panel-body{
 color: black;
-background: rgba(255,255,255,0.25);
+background: rgba(245, 245, 245, 0.41);
 text-align: center;
 }
 
 .panel-body{
 color:black;
-background: rgba(255,255,255,0.25);
+background: rgba(245, 245, 245, 0.41);
 text-align: left;
 }
 
@@ -76,9 +76,33 @@ footer li{
 
 
 .panel{
-	color: black
+	color: black;
+}
+.panel2{
+	background:rgba(0,130,237,0.25);
+	color:white;
+	margin-bottom: 20px;
+	border: 1px solid #0082ED;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	min-height:600px;
+	max-height:600px;
+	overflow:auto;
 }
 
+.panel3{
+	background: rgba(245, 245, 245, 0.41);
+    color:black;
+	margin-bottom: 20px;
+	border: 1px solid #0082ED;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	min-height:600px;
+	max-height:600px;
+	overflow:auto;
+}
 footer img{
 	width: 100px;
 	height: auto;
@@ -174,4 +198,38 @@ li{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#207cca',GradientType=1 ); /* IE6-9 */
 	color: white;
 	border-radius: 5px;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+::-webkit-scrollbar-thumb {
+    background: #e1e1e1;
+    border: 62px none #ffffff;
+    border-radius: 18px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+}
+::-webkit-scrollbar-thumb:active {
+    background: #494949;
+}
+::-webkit-scrollbar-track {
+    background: #000000;
+    border: 3px none #ffffff;
+    border-radius: 30px;
+}
+::-webkit-scrollbar-track:hover {
+    background: #838383;
+}
+::-webkit-scrollbar-track:active {
+    background: #ffffff;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
 }

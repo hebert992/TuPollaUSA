@@ -87,13 +87,15 @@
                                 <li><a href="{{ url('/admin/tiendas') }}"><i class="glyphicon glyphicon-home"></i>Tiendas</a></li>
                                 <li><a href="{{ url('/admin/polla') }}"><i class="glyphicon glyphicon-th-list"></i>Carreras</a></li>
                                 <li><a href="{{ url('/admin/recargas') }}"><i class="glyphicon glyphicon-usd"></i>Recargas</a></li>
+                                <li><a href="{{ url('/noticias') }}"><i class="glyphicon glyphicon-envelope"></i>Noticias</a></li>
                                 <li><a href="{{ url('/usuario/apuestas') }}"><i class="glyphicon glyphicon-th-list"></i>Historial de Pollas</a></li>
+                                <li><a href="{{ url('/admin/apuestas/list') }}"><i class="glyphicon glyphicon-th-list"></i>Ultimas de Apuestas</a></li>
                                 <li><a href="{{ url('/admin/config') }}"><i class="glyphicon glyphicon-floppy-open"></i>Configuracion</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="glyphicon glyphicon-off"></i>Salir</a></li>
                             @endif
                             @if( Auth::user()->rol=="tienda")
                                 <li><a href="{{ url('/tienda/usuarios') }}"><i class="glyphicon glyphicon-user"></i>Stud</a></li>
-                                <li><a href="{{ url('/usuario/apuestas') }}"><i class="glyphicon glyphicon-th-list"></i>Historial de Pollas</a></li>
+                                <li><a href="{{ url('/usuario/apuestas') }}"><i class="glyphicon glyphicon-th-list"></i>Ultimas de Pollas</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="glyphicon glyphicon-off"></i>Salir</a></li>
                             @endif
 
@@ -207,8 +209,8 @@
         <div class="row">
             <div class="col-md-4">
                 <ul>
-                    <li><a href="">¿Como Jugar?</a></li>
-                    <li><a href="">Reglas</a></li>
+                    <li><a href="">Anteriores Juegos</a></li>
+                    <li><a href="">Contactanos</a></li>
                     <li><a href="">Formas de Pago</a></li>
                 </ul>
             </div>

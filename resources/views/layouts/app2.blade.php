@@ -85,13 +85,16 @@
                             <li><a href="{{ url('/admin/tiendas') }}"><i class="glyphicon glyphicon-home"></i>Tiendas</a></li>
                             <li><a href="{{ url('/admin/polla') }}"><i class="glyphicon glyphicon-th-list"></i>Carreras</a></li>
                             <li><a href="{{ url('/admin/recargas') }}"><i class="glyphicon glyphicon-usd"></i>Recargas</a></li>
+                            <li><a href="{{ url('/noticias') }}"><i class="glyphicon glyphicon-envelope"></i>Noticias</a></li>
                             <li><a href="{{ url('/usuario/apuestas') }}"><i class="glyphicon glyphicon-th-list"></i>Historial de Pollas</a></li>
+                            <li><a href="{{ url('/admin/apuestas/list') }}"><i class="glyphicon glyphicon-th-list"></i>Ultimas de Apuestas</a></li>
                             <li><a href="{{ url('/admin/config') }}"><i class="glyphicon glyphicon-floppy-open"></i>Configuracion</a></li>
                             <li><a href="{{ url('/logout') }}"><i class="glyphicon glyphicon-off"></i>Salir</a></li>
                         @endif
                         @if( Auth::user()->rol=="tienda")
                             <li><a href="{{ url('/tienda/usuarios') }}"><i class="glyphicon glyphicon-user"></i>Stud</a></li>
                             <li><a href="{{ url('/usuario/apuestas') }}"><i class="glyphicon glyphicon-th-list"></i>Historial de Pollas</a></li>
+                                <li><a href="{{ url('/admin/apuestas/list') }}"><i class="glyphicon glyphicon-th-list"></i>Ultimas de Apuestas</a></li>
                             <li><a href="{{ url('/logout') }}"><i class="glyphicon glyphicon-off"></i>Salir</a></li>
                         @endif
 
@@ -157,10 +160,10 @@
     @include("parcial.Mensajes")
 
     <div class="row">
-        <div class="panel color1 col-md-4">
+        <div class="panel2 color1 col-md-4">
             <p>
             <div class ="page-header">
-                <h3><a href="#">Chat general</a></h3>
+                <h3><a href="#">Chat TuPollaUSA</a></h3>
             </div>
 
             @if (Auth::guest())
@@ -186,7 +189,7 @@
 
 
 
-        <div class="panel col-md-8 content ">
+        <div class="panel3 col-md-8 content ">
 
             @yield("content")
 
@@ -240,9 +243,9 @@
         <div class="row">
             <div class="col-md-4">
                 <ul>
-                    <li><a href="">¿Como Jugar?</a></li>
-                    <li><a href="">Reglas</a></li>
-                    <li><a href="">Formas de Pago</a></li>
+                    <li><a href="#">Juegos Anteriores</a></li>
+                    <li><a href="#"></a>Contactanos</li>
+                    <li><a href="#">Formas de Pago</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -250,9 +253,9 @@
             </div>
             <div class="col-md-4">
                 <ul>
-                    <li><a href="{{url("comojugar")}}">Anteriores Juegos</a></li>
-                    <li><a href="{{url("/reglas")}}">Contactanos</a></li>
-                    <li><a href="">Preguntas Frecuentes</a></li>
+                    <li><a href="{{url("comojugar")}}">¿Como Jugar?</a></li>
+                    <li><a href="{{url("/reglas")}}">Reglas</a></li>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
                 </ul>
             </div>
         </div>

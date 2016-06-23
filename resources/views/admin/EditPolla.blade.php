@@ -108,14 +108,13 @@
                                     <select class="form-control" name="terreno">
                                         <option>{{$polla->terreno}}</option>
 
-                                        <option value="arena">Arena</option>
-                                        <option value="grava">Grava</option>
-                                        <option value="cesped">Cesped</option>
+                                        <option value="Turf">Turf</option>
+                                        <option value="Dirt">Dirt</option>
 
                                     </select>
-                                    @if ($errors->has('tipo'))
+                                    @if ($errors->has('terreno'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('tipo') }}</strong>
+                                        <strong>{{ $errors->first('terreno') }}</strong>
                                     </span>
                                     @endif
 

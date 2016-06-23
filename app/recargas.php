@@ -14,7 +14,7 @@ class recargas extends Model
     ];
     public static function ValorCoins()
     {
-        return 2;
+        return 3000;
     }
     public function scopeName($query,$name)
     {
@@ -28,6 +28,8 @@ class recargas extends Model
         $query->where("id_master",$id);
 
     }
+
+
     public function scopeFecha($query , $desde,$hasta)
     {//SELECT * FROM recargas WHERE created_at >= '2016-05-07' AND created_at <= '2016-05-09'
         if (trim($desde) != ""&& trim($hasta) != "")

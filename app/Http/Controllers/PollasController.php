@@ -90,7 +90,6 @@ class PollasController extends Controller
         }
 
     }
-
     public function VistaEditarPolla($ID)
     {
         if(Auth::user()->rol==="admin") {
@@ -105,7 +104,6 @@ class PollasController extends Controller
 
 
     }
-
     public function EditarPolla(Request $request)
     {
         if(Auth::user()->rol==="admin") {
@@ -135,7 +133,6 @@ class PollasController extends Controller
         }
 
     }
-
     public function EditarCAballo(Request $request)
     {
         if(Auth::user()->rol==="admin") {
@@ -158,7 +155,7 @@ class PollasController extends Controller
 
         if (Auth::user()->rol === "admin")
         {
-
+//Turf', 'Dirt')
             $v = Validator::make($request->all(), [
 
                 'name' => 'required',
@@ -166,7 +163,7 @@ class PollasController extends Controller
                 'fecha' => 'required',
                 'pago' => 'required',
                 'caballos_numero' => 'required|numeric',
-                'tipo' => "required|in:arena,grava,cesped",
+                'terreno' => "required|in:Turf,Dirt",
                 'distancia' => 'required',
 
 
@@ -505,7 +502,6 @@ $n= count($definitiva);
         }
 
     }
-
     public function BorrarCaballo($ID)
     {
         if(Auth::user()->rol==="admin")
